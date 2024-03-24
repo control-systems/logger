@@ -1,0 +1,37 @@
+{
+  "name": "@control.systems/logger",
+  "version": "1.0.2",
+  "license": "CC0-1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tasker build",
+    "format": "prettier --write --cache \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fecha": "4.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
+  },
+  "packageManager": "pnpm@8.15.1",
+  "engines": {
+    "node": ">=18.16.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
