@@ -10,6 +10,7 @@ import {
   PrettyFormatterColors
 } from '../util/constants'
 import type { Formatter, LogData } from './Formatter'
+import { isPlainObject } from '../util/object'
 
 const ERROR_STACK_LINE_COLOR_REGEX = /^ {4}at (?:(.*?) (\(.*\))|(.*?))$/gm
 const ERROR_HEADER_COLOR_REGEX = /^(?:(Caused by:) )?(\w+):* *(.*)$/gm
@@ -123,6 +124,23 @@ export class PrettyFormatter implements Formatter {
 
         msg += formatted
         continue
+      } else if (isPlainObject(data)) {
+        msg += `${JSON.parse(
+          JSON.stringify(
+            inspect(data, {
+              colors: true,
+              depth: null,
+              numericSeparator: true,
+              showHidden: false
+            })
+          )
+            // Colorize 0s as red
+            .replaceAll(
+              /(: \\u001b\[33m)0\\u001b\[39m/g,
+              '$1\\u001b[31m0\\u001b[39m'
+            )
+        )} `
+        continue
       }
 
       msg += `${data} `
@@ -152,7 +170,7 @@ export class PrettyFormatter implements Formatter {
             typeAndFn
           )}${this.colors.get(ColorKey.ERROR_LOCATION)?.(
             location2
-          )} ${this.colors.get(ColorKey.ERROR_LOCATION)?.(location1)}`
+          )} ${this.colors.get(ColorKey.ERROR_LOCATION)?.(location1)} `
         }
       )
       .replace(NODEJS_SOURCE_MAPPED_LINE_COLOR_REGEX, (_, location) => {
@@ -160,7 +178,7 @@ export class PrettyFormatter implements Formatter {
           ColorKey.ERROR_NODEJS_SOURCE_MAP_ARROW
         )?.('->')} ${this.colors.get(
           ColorKey.ERROR_NODEJS_SOURCE_MAP_LOCATION
-        )?.(location)}`
+        )?.(location)} `
       })
       .replace(ERROR_HEADER_COLOR_REGEX, (_, causedBy, errorName, message) => {
         let code = ''
@@ -170,13 +188,10 @@ export class PrettyFormatter implements Formatter {
           message = message.substr(lastIndex + 1)
         }
 
-        return `${this.colors.get(ColorKey.ERROR_CAUSED_BY)?.(causedBy)}${
-          causedBy ? ' ' : ''
-        }${this.colors.get(ColorKey.ERROR_NAME)?.(errorName)}: ${
-          code ? '(' : ''
-        }${this.colors.get(ColorKey.ERROR_CODE)?.(code)}${
-          code ? ')' : ''
-        }${message}`
+        return `${this.colors.get(ColorKey.ERROR_CAUSED_BY)?.(causedBy)}${causedBy ? ' ' : ''
+          }${this.colors.get(ColorKey.ERROR_NAME)?.(errorName)}: ${code ? '(' : ''
+          }${this.colors.get(ColorKey.ERROR_CODE)?.(code)}${code ? ')' : ''
+          }${message} `
       })
   }
 }

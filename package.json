@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tasker build",
+    "build": "unbuild",
     "format": "prettier --write --cache \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit"
   },
@@ -23,11 +23,12 @@
     "fecha": "4.2.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.3"
+    "@types/node": "^20.14.9",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2",
+    "unbuild": "^2.0.0"
   },
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@8.15.8",
   "engines": {
     "node": ">=18.16.1"
   },

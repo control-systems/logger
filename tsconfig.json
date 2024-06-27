@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "lib": [
-      "ES2015"
+      "ESnext"
     ],
-    "module": "CommonJS",
+    "target": "ESNext",
+    "module": "ESNext",
     "outDir": "./dist",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "moduleResolution": "Bundler"
   },
   "exclude": [
     "node_modules",
