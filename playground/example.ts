@@ -10,7 +10,7 @@ logger.debug('Fetched data')
 logger.error(new Error('This is an example error. Everything is fine!'))
 
 logger.info({ this: 'is', a: 'plain', javascript: 'object' })
-logger.info({
+logger.info([0, 1, 2, 3, 4], {
   user: {
     id: 123,
     name: 'Alice',

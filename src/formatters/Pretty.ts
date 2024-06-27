@@ -10,7 +10,7 @@ import {
   PrettyFormatterColors
 } from '../util/constants'
 import type { Formatter, LogData } from './Formatter'
-import { isPlainObject } from '../util/object'
+import { isPlainObject } from '../util/inspect'
 
 const ERROR_STACK_LINE_COLOR_REGEX = /^ {4}at (?:(.*?) (\(.*\))|(.*?))$/gm
 const ERROR_HEADER_COLOR_REGEX = /^(?:(Caused by:) )?(\w+):* *(.*)$/gm
@@ -124,7 +124,7 @@ export class PrettyFormatter implements Formatter {
 
         msg += formatted
         continue
-      } else if (isPlainObject(data)) {
+      } else if (isPlainObject(data) || Array.isArray(data)) {
         msg += `${JSON.parse(
           JSON.stringify(
             inspect(data, {
@@ -188,10 +188,13 @@ export class PrettyFormatter implements Formatter {
           message = message.substr(lastIndex + 1)
         }
 
-        return `${this.colors.get(ColorKey.ERROR_CAUSED_BY)?.(causedBy)}${causedBy ? ' ' : ''
-          }${this.colors.get(ColorKey.ERROR_NAME)?.(errorName)}: ${code ? '(' : ''
-          }${this.colors.get(ColorKey.ERROR_CODE)?.(code)}${code ? ')' : ''
-          }${message} `
+        return `${this.colors.get(ColorKey.ERROR_CAUSED_BY)?.(causedBy)}${
+          causedBy ? ' ' : ''
+        }${this.colors.get(ColorKey.ERROR_NAME)?.(errorName)}: ${
+          code ? '(' : ''
+        }${this.colors.get(ColorKey.ERROR_CODE)?.(code)}${
+          code ? ')' : ''
+        }${message} `
       })
   }
 }
