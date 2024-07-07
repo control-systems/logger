@@ -1,4 +1,4 @@
-import { inspect } from 'util'
+import { inspect } from 'node:util'
 import fecha from 'fecha'
 
 import type { Logger } from '../Logger'
@@ -11,6 +11,7 @@ import {
 } from '../util/constants'
 import type { Formatter, LogData } from './Formatter'
 import { isPlainObject } from '../util/inspect'
+import { sep } from 'node:path'
 
 const ERROR_STACK_LINE_COLOR_REGEX = /^ {4}at (?:(.*?) (\(.*\))|(.*?))$/gm
 const ERROR_HEADER_COLOR_REGEX = /^(?:(Caused by:) )?(\w+):* *(.*)$/gm
@@ -159,6 +160,7 @@ export class PrettyFormatter implements Formatter {
       typeof anyError?.[inspect.custom] === 'function'
         ? inspect(error, false, 0, false)
         : (error.stack as string)
+    const cwd = process.cwd() + sep
 
     return stack
       .replace(
@@ -196,6 +198,8 @@ export class PrettyFormatter implements Formatter {
           code ? ')' : ''
         }${message} `
       })
+      .replace('file://', '')
+      .replace(cwd, '')
   }
 }
 
