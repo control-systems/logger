@@ -1,9 +1,13 @@
 {
   "name": "@control.systems/logger",
-  "entryPoints": ["src/index.ts"],
-  "plugin": ["typedoc-material-theme"],
+  "entryPoints": [
+    "src/index.ts"
+  ],
+  "plugin": [
+    "typedoc-material-theme"
+  ],
   "themeColor": "#F99A5F",
   "customCss": "./styles/typedoc.css",
   "hideGenerator": true,
-  "customFooterHtml": "<a href='https://github.com/taskylizard'>taskylizard</a>"
+  "customFooterHtml": "Follow • <a href='https://github.com/taskylizard'>taskylizard</a>"
 }
