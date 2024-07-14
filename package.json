@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "build:docs": "typedoc",
     "format": "prettier --write --cache \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit"
   },
@@ -25,6 +26,8 @@
   "devDependencies": {
     "@types/node": "^20.14.9",
     "prettier": "^3.3.2",
+    "typedoc": "^0.26.4",
+    "typedoc-material-theme": "^1.1.0",
     "typescript": "^5.5.2",
     "unbuild": "^2.0.0"
   },
