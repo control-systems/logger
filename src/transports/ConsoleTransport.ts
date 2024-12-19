@@ -2,7 +2,7 @@ import { EOL } from 'os'
 
 import type { LogData } from '../formatters/Formatter'
 import { LogLevel, LogLevelValue } from '../util/constants'
-import { Transport, TransportOptions } from './Transport'
+import { Transport, type TransportOptions } from './Transport'
 
 export class ConsoleTransport extends Transport<ConsoleTransportOptions> {
   /**

@@ -1,5 +1,5 @@
 {
-  "name": "@control.systems/logger",
+  "name": "traceflow",
   "entryPoints": [
     "src/index.ts"
   ],
@@ -7,7 +7,6 @@
     "typedoc-material-theme"
   ],
   "themeColor": "#F99A5F",
-  "customCss": "./styles/typedoc.css",
   "hideGenerator": true,
-  "customFooterHtml": "Follow • <a href='https://github.com/taskylizard'>taskylizard</a>"
+  "customFooterHtml": "Follow <a href='https://github.com/taskylizard'>taskylizard</a>"
 }

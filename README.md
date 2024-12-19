@@ -1,6 +1,4 @@
-## `@control.systems/logger`
-
-> View documentation on https://control-systems.github.io/logger/.
+## `traceflow`
 
 A lightweight, customizable logging library for TypeScript applications that
 enhances logging for log-heavy apps like backends.

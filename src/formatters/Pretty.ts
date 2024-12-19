@@ -1,12 +1,11 @@
 import { inspect } from 'node:util'
-import fecha from 'fecha'
-
+import fecha from '../util/date'
 import type { Logger } from '../Logger'
-import { Color, ColorCode, ColorFormatter } from '../util/Color'
+import { Color, ColorCode, type ColorFormatter } from '../util/Color'
 import {
   ColorKey,
   LogLevel,
-  PrettyFormatterColorKey,
+  type PrettyFormatterColorKey,
   PrettyFormatterColors
 } from '../util/constants'
 import type { Formatter, LogData } from './Formatter'

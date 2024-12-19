@@ -6,10 +6,13 @@
     "target": "ESNext",
     "module": "ESNext",
     "outDir": "./dist",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "types": [
+      "vitest/globals"
+    ],
+    "verbatimModuleSyntax": true
   },
   "exclude": [
-    "node_modules",
     "dist"
   ]
 }
