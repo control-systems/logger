@@ -1,5 +1,5 @@
 {
-  "name": "traceflow",
+  "name": "tracix",
   "entryPoints": [
     "src/index.ts"
   ],

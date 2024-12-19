@@ -1,5 +1,5 @@
 {
-  "name": "traceflow",
+  "name": "tracix",
   "version": "1.0.0",
   "description": "A lightweight, customizable logging library for TypeScript applications that enhances logging for log-heavy apps like backends.",
   "license": "CC0-1.0",
